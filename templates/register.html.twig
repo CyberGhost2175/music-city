@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+ {% block stylesheets %}
+     <link rel="stylesheet" href="{{ asset('/styles/login.css') }}">
+ {% endblock %}
+{% block body %}
+    <section>
+
+    <div class="form-box">
+        <div class="form-value">
+        {{ form_start(form) }}
+            <h2>Registration</h2>
+            <div class="inputbox">
+
+                <ion-icon name="people-outline"></ion-icon>
+                {{ form_widget(form.username) }}
+                {{ form_label(form.username) }}
+            </div>
+            <div class="inputbox">
+
+                <ion-icon name="mail-outline"></ion-icon>
+                {{ form_widget(form.email) }}
+                {{ form_label(form.email) }}
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                {{ form_widget(form.password) }}
+                {{ form_label(form.password) }}
+            </div>
+
+            {{ form_end(form) }}
+            <div class="login" style="margin-top: 10px;">
+                <a href="{{ path("app_login") }}">Already have an account?</a>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+{% endblock %}

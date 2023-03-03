@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/styles/home.css') }}">
+    {% endblock %}
+    <title>Music City</title>
+</head>
+<body style="background-color: #1D2D47;">
+{% block body %}
+    <div class="wrapper">
+<div class="main-block">
+<div class="side-bar">
+<h1> <img src="https://cdn-icons-png.flaticon.com/32/8403/8403914.png" alt="img"> Music City</h1>
+    {% if not is_granted('ROLE_USER') %}
+        <a href="{{ path("app_login") }}"><ion-icon name="person-circle-outline"></ion-icon> Sign in </a>
+
+    {% else %}
+        <a href="{{ path('app_edit_user') }}" style="padding-left:10px "> <img src="{{ app.user.image.path }}" alt="">{{ app.user.username }} </a>
+        <a href='{{ path("albums_show") }}'><ion-icon name="albums-outline"></ion-icon> albums</a>
+        <a href="#"><ion-icon name="musical-notes-outline"></ion-icon> tracks</a>
+        <a href="{{ path('artists_show') }}"><ion-icon name="person-outline"></ion-icon> artists</a>
+        <a href="{{ path('app_logout') }}" style="color:coral" ><ion-icon name="exit-outline"></ion-icon> log out</a>
+    {% endif %}
+
+</div>
+
+<div class="information">
+    {% if not is_granted('ROLE_USER') %}
+    <div class="notsign-in" style="text-align: center">
+
+        <h3>Welcome to Music City</h3>
+        <h3 >Please sign in or create an account</h3 >
+    </div>
+
+
+    {% else %}
+    <h2>Recommended Artists</h2>
+    <div class="recomended-artists">
+    {% for artist in data %}
+        <div class="artist-item">
+            <img src="{{ artist.images[0].url }}" alt="image">
+        <h4>{{ artist.name }}</h4>
+            <p> popularity: {{ artist.popularity }}</p>
+            <p>followers: {{ artist.followers.total }}</p>
+        </div>
+    {% endfor %}
+</div>
+    <h2>Recommended Tracks</h2>
+    <div class="recomended-tracks">
+        {%for track in tracks %}
+            <div class="track-item">
+                <img src="{{ track.album.images[0].url }}" alt="">
+
+                <a href="" ><ion-icon name="play-circle-outline" ></ion-icon></a>
+            <h3>{{  track.name}} -  </h3>
+            <p>  {{ track.artists[0].name }}</p>
+            </div>
+
+            <script>
+                window.onSpotifyWebPlaybackSDKReady = () => {
+                    const player = new Spotify.Player({
+                        name: 'Web Playback SDK Quick Start Player',
+                        getOAuthToken: cb => { cb('<?php echo $accessToken; ?>'); }
+                    });
+                    player.connect().then(success => {
+                        console.log(success);
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                };
+            </script>
+        {% endfor %}
+    </div>
+
+</div>
+    {% endif %}
+    {% endblock%}
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+4</body>
+</html>

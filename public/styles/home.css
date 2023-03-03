@@ -1,0 +1,156 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+
+}
+
+.wrapper{
+    position: absolute;
+    left: 15%;
+    top: 10%;
+
+}
+
+
+
+
+.main-block{
+    box-shadow: 1px 1px 10px 5px purple;
+    background-color: #0E1929;
+    border-radius: 30px;
+    width:1200px;
+    display: flex;
+    justify-content: space-between;
+    height: 600px;
+    position: static;
+
+
+}
+
+.side-bar{
+    border-right: 0.5px solid gray;
+    width: 20%;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+justify-content: center;
+    align-items: center;
+
+}
+.side-bar h1{
+    text-transform: uppercase;
+    font-size:20px;
+    -webkit-background-clip: text;
+    color: purple;
+
+    letter-spacing: 4px;
+    font-family: 'century Gothic';
+
+}
+
+.side-bar a{
+    padding-top:20px;
+    font-size: 25px;
+
+    text-decoration: none;
+    color:#60686C;
+}
+.side-bar a:hover{
+
+transition: .2s;
+    color:#fff;
+}
+.information{
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #6969dd #e0e0e0;
+}
+.notsign-in{
+    position: absolute;
+    left: 40%;
+    top: 40%;
+}
+.notsign-in h3{
+    text-transform: uppercase;
+    font-size:20px;
+    -webkit-background-clip: text;
+    text-shadow: #FC0 5px 0 10px;
+    letter-spacing: 4px;
+    font-family: 'century Gothic';
+    color:#fff;
+
+}
+.side-bar img{border-radius: 50px;
+
+    width:40px;
+    height: 40px;
+}
+
+.information h2{
+    margin-top: 20px;
+font-weight: bold;
+    font-family: 'Century Gothic';
+color:#fff;
+}
+.recomended-artists{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-right: 50px;
+}
+.artist-item h4{
+    padding-top: 10px;
+    font-family: Bahnschrift;
+    color:#fff;
+}
+.artist-item p{
+color:lightgray;;
+}
+.artist-item{
+    margin-right: 10px;
+    background-color: grey;
+    padding: 15px;
+    border-radius: 10px;
+    border:0.2px solid gray;
+    width: 200px;
+}
+.recomended-tracks{
+
+}
+.artist-item:hover{
+    transition: .2s;
+    background:linear-gradient(45deg ,#2e1b00,#6e0000,#000000);
+    cursor: pointer;
+}
+.artist-item img{
+border-radius: 10px;
+    width: 150px;
+}
+.track-item{
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    border:0.2px solid gray;
+    width:50%;
+    height: 70px;
+    margin-bottom: 10px;
+}
+.track-item h3{
+    color:#fff;
+}
+.track-item p{
+    padding-top: 15px;
+    font-size: 18px;
+    color:gray;
+}
+.track-item img{
+    border-radius: 5px;
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+}
+.track-item a{
+    font-size: 30px;
+}

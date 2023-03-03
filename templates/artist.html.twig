@@ -1,0 +1,11 @@
+{%extends 'base.html.twig' %}
+{% block body %}
+    {% for artist in data %}
+  <p>
+      {{ artist[1].name }}
+      {{ artist[1].followers.total }}
+      {{ artist[1].genres[1] }}
+      <img src="{{ artist[1].images[0].url }}" alt="">
+  </p>
+    {% endfor %}
+{% endblock %}

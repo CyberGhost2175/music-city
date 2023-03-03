@@ -1,0 +1,57 @@
+{%extends 'base.html.twig' %}
+
+    {% block stylesheets %}
+    <style>
+        {% block stylesheets %}
+
+        recomended-artists{
+            display: flex;
+            justify-content: center;
+                align-items:center;
+                margin: 0 auto;
+            }
+            .album-item h4{
+                padding-top: 10px;
+                font-family: Bahnschrift;
+                color:#fff;
+        }
+        .album-item p{
+            color:lightgray;;
+        }
+        .album-item{
+            margin-right: 10px;
+            background-color: grey;
+            padding: 15px;
+            border-radius: 10px;
+            border:0.2px solid gray;
+            width: 200px;
+        }
+
+        .album-item:hover{
+            transition: .2s;
+            background:linear-gradient(45deg ,#2e1b00,#6e0000,#000000);
+            cursor: pointer;
+        }
+        .album-item img{
+            border-radius: 10px;
+            width: 150px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="main-block">
+
+
+    <div class="recomended-artists">
+        {% for album in data %}
+            <div class="album-item">
+                <img src="{{ album.images[0].url }}" alt="image">
+                <h4>{{ album.name }}</h4>
+                <p> popularity: {{ album.popularity }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock %}
